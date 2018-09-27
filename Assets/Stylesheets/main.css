@@ -31,6 +31,10 @@ body {
     background: blue;
 }
 
+#Restart {
+    display: none;
+}
+
 .Next {
 margin-left: 10px;
 height: 21px;
