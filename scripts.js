@@ -15,7 +15,9 @@ var next = document.querySelector('#text-box > button');
 
 //------------------------Global Button Eventlistners----------------------//
 
-library.addEventListener('click', runLibrary);
+library.addEventListener('click', function() {
+    makeAChoice()
+} runLibrary);
 library.addEventListener('click', upgradeLibrary);
 gym.addEventListener('click',runGym);
 gym.addEventListener('click', upgradeGym);
@@ -39,6 +41,13 @@ function runLibrary () {
 }
 
 function runGym () {
+
+}
+
+function run(choice) {
+if(choice === 0 ) {
+//Gym
+}
 
 }
 
@@ -105,7 +114,6 @@ function newDay () {
     var newDayText = document.createElement('p');
     newDayText.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     textbox.appendChild(newDayText);
-    textbox.appendChild(next);
 
 }
 
