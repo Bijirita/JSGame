@@ -64,7 +64,7 @@ function proceedStoryLibrary () {
 }
 
 function fridayFight () {
-    
+
 }
 //--------------------Upgrade Functions---------------//
 
@@ -103,8 +103,9 @@ function newDay () {
     textbox.removeChild(textp);
     textbox.removeChild(next);
     var newDayText = document.createElement('p');
-    newDayText.textContent = 'Today is ' + day[dayIndex];
+    newDayText.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     textbox.appendChild(newDayText);
+    textbox.appendChild(next);
 
 }
 
