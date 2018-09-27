@@ -14,15 +14,13 @@ var textp = document.querySelector('#text-box > p');
 var next = document.querySelector('#text-box > button');
 
 //------------------------Global Button Eventlistners----------------------//
-
-library.addEventListener('click', function() {
-    makeAChoice()
-} runLibrary);
 library.addEventListener('click', upgradeLibrary);
-gym.addEventListener('click',runGym);
 gym.addEventListener('click', upgradeGym);
-work.addEventListener('click', runWork);
 work.addEventListener('click', upgradeWork);
+
+library.addEventListener('click', runLibrary);
+gym.addEventListener('click',runGym);
+work.addEventListener('click', runWork);
 fight.addEventListener('click', runFight);
 
 //----------------------Functions------------------------//
@@ -44,12 +42,6 @@ function runGym () {
 
 }
 
-function run(choice) {
-if(choice === 0 ) {
-//Gym
-}
-
-}
 
 function runWork () {
 
@@ -80,6 +72,7 @@ function fridayFight () {
 function upgradeLibrary () {
     console.log(hero[0]);
     hero[0] = hero[0] +=2;
+    library.removeEventListener('click', upgradeLibrary);
     console.log(hero[0]);
 }
 
