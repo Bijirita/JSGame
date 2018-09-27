@@ -25,7 +25,19 @@ body {
 }
 
 #text-box {
+    display: flex;
     height: 150px;
     width: 570px;
     background: blue;
 }
+
+.Next {
+margin-left: 10px;
+height: 21px;
+width: 60px;
+
+}
+
+
+
+
