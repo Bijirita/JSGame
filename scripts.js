@@ -3,7 +3,8 @@
 var hero = [0, 0, 0]
 var bully = [1, 1, 1]
 var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
-var dayI = 0;
+var dayIndex = 0;
+var todayIs = document.getElementById('TodayIs');
 var library = document.getElementById('Library');
 var gym = document.getElementById('Gym');
 var work = document.getElementById('Work');
@@ -17,7 +18,9 @@ var next = document.querySelector('#text-box > button');
 library.addEventListener('click', runLibrary);
 library.addEventListener('click', upgradeLibrary);
 gym.addEventListener('click',runGym);
+gym.addEventListener('click', upgradeGym);
 work.addEventListener('click', runWork);
+work.addEventListener('click', upgradeWork);
 fight.addEventListener('click', runFight);
 
 //----------------------Functions------------------------//
@@ -31,7 +34,7 @@ function runLibrary () {
     library.removeEventListener('click', runLibrary);
     textbox.appendChild(next);
     next.addEventListener('click', proceedStoryLibrary);
-    // next.addEventListener('click', newDay);
+    next.addEventListener('click', newDay);
     console.log('checkpoint 3');
 }
 
@@ -60,8 +63,9 @@ function proceedStoryLibrary () {
     next.onclick = newDay;
 }
 
-newDay();
-
+function fridayFight () {
+    
+}
 //--------------------Upgrade Functions---------------//
 
 function upgradeLibrary () {
@@ -70,15 +74,38 @@ function upgradeLibrary () {
     console.log(hero[0]);
 }
 
+function upgradeGym () {
+    console.log(hero[1]);
+    hero[1] = hero[1] +=2;
+    console.log(hero[1]);
+}
+
+function upgradeWork () {
+    console.log(hero[2]);
+    hero[0] = hero[2] +=2;
+    console.log(hero[2]);
+}
 
 
 //---------------------New Day Functions------------------->
 
+
+
 function newDay () {
-    console.log(dayI);
-    for (i = 0; dayI < 4; i++ ) {
-        var dayI = dayI[i];
+    dayIndex = ++dayIndex;
+    if (dayIndex === day.length) {
+        fridayFight();
     }
+    console.log(dayIndex);
+    var textp = document.querySelector('#text-box > p');
+    var next = document.querySelector('#text-box > button');
+    console.log("dayIndex " + dayIndex);
+    textbox.removeChild(textp);
+    textbox.removeChild(next);
+    var newDayText = document.createElement('p');
+    newDayText.textContent = 'Today is ' + day[dayIndex];
+    textbox.appendChild(newDayText);
+
 }
 
 
