@@ -15,7 +15,7 @@ var next = document.querySelector('#text-box > button');
 //------------------------Global Button Eventlistners----------------------//
 
 library.addEventListener('click', runLibrary);
-library.addEventListener('click', hero[0] ++);
+library.addEventListener('click', upgradeLibrary);
 gym.addEventListener('click',runGym);
 work.addEventListener('click', runWork);
 fight.addEventListener('click', runFight);
@@ -61,6 +61,18 @@ function proceedStoryLibrary () {
 }
 
 newDay();
+
+//--------------------Upgrade Functions---------------//
+
+function upgradeLibrary () {
+    console.log(hero[0]);
+    hero[0] = hero[0] +=2;
+    console.log(hero[0]);
+}
+
+
+
+//---------------------New Day Functions------------------->
 
 function newDay () {
     console.log(dayI);
