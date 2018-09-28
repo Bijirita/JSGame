@@ -106,13 +106,13 @@ function runWork () {
 
 function runFight () {
     console.log('fight1');
-    for (var i = 0; heroIndex < 4; i++) {
+    for (var i = 0; heroIndex <= 2; i++) {
         console.log(heroIndex);
         if (hero[heroIndex] > bully[heroIndex]) {
-            win();
+           return win();
             console.log('fight2');
-        } else if (heroIndex === 3){
-            lose();
+        }else if (heroIndex === 2) {
+           return lose();
         }else {
             heroIndex = ++heroIndex;
             console.log(heroIndex);
