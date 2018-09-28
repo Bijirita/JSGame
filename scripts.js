@@ -107,7 +107,7 @@ function runWork () {
 function runFight () {
     console.log('fight1');
     for (var i = 0; heroIndex < 4; i++) {
-
+        console.log(heroIndex);
         if (hero[heroIndex] > bully[heroIndex]) {
             win();
             console.log('fight2');
