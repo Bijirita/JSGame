@@ -15,7 +15,6 @@ var textbox = document.getElementById('text-box');
 var textp = document.querySelector('#text-box > p');
 var next = document.getElementById('Next');
 
-
 //------------------------------------Story--------------------------------------//
 
 function story () {
@@ -42,8 +41,6 @@ function story () {
         begin();
     }
 }
-
-
 
 function begin () {
 
@@ -78,7 +75,6 @@ function runGym () {
     console.log(hero[1]);
 }
 
-
 function runWork () {
     console.log(hero[2]);
     hero[2] = hero[2] +=2;
@@ -107,8 +103,6 @@ function fridayFight () {
 
 //---------------------New Day Functions------------------->
 
-
-
 function newDay () {
     dayIndex = ++dayIndex;
     if (dayIndex === day.length) {
@@ -123,5 +117,4 @@ function newDay () {
     var newDayText = document.createElement('p');
     newDayText.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     textbox.appendChild(newDayText);
-
 }
