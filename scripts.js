@@ -3,6 +3,7 @@
 var hero = [0, 0, 0];
 var bully = [1, 1, 1];
 var storyIndex = 0;
+var storyText = ["Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
 var dayIndex = 0;
 var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
 var todayIs = document.getElementById('TodayIs');
@@ -12,57 +13,44 @@ var work = document.getElementById('Work');
 var fight = document.getElementById('Fight');
 var textbox = document.getElementById('text-box');
 var textp = document.querySelector('#text-box > p');
-var next = document.querySelector('#text-box > button');
+var next = document.getElementById('Next');
 
 
 //------------------------------------Story--------------------------------------//
 
 function story () {
-    var storyText = ["Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
-    
     if (storyIndex < storyText.length - 1) {
         console.log(storyIndex);
         storyIndex = ++storyIndex;
-        var next = document.querySelector('#text-box > button');
+        console.log(storyIndex);
+        var next = document.getElementById('Next');
         var textp = document.querySelector('#text-box > p');
         textp.textContent = storyText[storyIndex];
         next.addEventListener('click', story);
-        console.log(storyIndex);
+        
     } else if (storyIndex === storyText.length) {
+        console.log('check1');
         var textp = document.querySelector('#text-box > p');
-        var next = document.querySelector('#textp > button');
+        var next = document.getElementById('Next');
         var throwdown = document.createElement('button');
         throwdown.textContent = '"Let\'s go right now!"';
         textp.appendChild(throwdown);
         storyIndex = ++storyIndex;
         throwdown.addEventListener = runFight;
-    }
-    else {
+        next.addEventListener('click', story);
+    } else {
         begin();
     }
-
-    // for (i = 0; storyIndex < storyText.length; i++) {
-    //     storyIndex = storyIndex += i;
-    
-    // textbox.removeChild(next);
-    // var next = document.createElement('button');
-    // next.textContent = Next;
-    // 
-    // 
-    // 
-    // }
 }
 
-next.addEventListener('click', story);
+
 
 function begin () {
 
 }
 //------------------------Global Button Eventlistners----------------------//
 
-library.addEventListener('click', upgradeLibrary);
-gym.addEventListener('click', upgradeGym);
-work.addEventListener('click', upgradeWork);
+next.addEventListener('click', story);
 library.addEventListener('click', runLibrary);
 gym.addEventListener('click',runGym);
 work.addEventListener('click', runWork);
@@ -71,6 +59,7 @@ fight.addEventListener('click', runFight);
 //----------------------Functions------------------------//
 function runLibrary () {
     console.log('checkpoint 1');
+    hero[0] = hero[0] +=2;
     textp.parentNode.removeChild(textp);
     console.log('checkpoint 2')
     var actionLibrary = document.createElement('p');
@@ -84,18 +73,21 @@ function runLibrary () {
 }
 
 function runGym () {
-
+    console.log(hero[1]);
+    hero[1] = hero[1] +=2;
+    console.log(hero[1]);
 }
 
 
 function runWork () {
-
+    console.log(hero[2]);
+    hero[2] = hero[2] +=2;
+    console.log(hero[2]);
 }
 
 function runFight () {
 
 }
-
 
 function proceedStoryLibrary () {
     var textp = document.querySelector('#text-box > p');
@@ -112,27 +104,6 @@ function proceedStoryLibrary () {
 function fridayFight () {
 
 }
-//--------------------Upgrade Functions---------------//
-
-function upgradeLibrary () {
-    console.log(hero[0]);
-    hero[0] = hero[0] +=2;
-    library.removeEventListener('click', upgradeLibrary);
-    console.log(hero[0]);
-}
-
-function upgradeGym () {
-    console.log(hero[1]);
-    hero[1] = hero[1] +=2;
-    console.log(hero[1]);
-}
-
-function upgradeWork () {
-    console.log(hero[2]);
-    hero[2] = hero[2] +=2;
-    console.log(hero[2]);
-}
-
 
 //---------------------New Day Functions------------------->
 
@@ -154,7 +125,3 @@ function newDay () {
     textbox.appendChild(newDayText);
 
 }
-
-//if statement
-//incremetn counter
-//check if counter for day
