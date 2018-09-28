@@ -14,7 +14,7 @@ body {
 
 .interaction-window button {
     width: 60px;
-    visibility: hidden;
+    display: none;
 }
 
 .text-window {

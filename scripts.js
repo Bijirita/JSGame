@@ -1,7 +1,8 @@
 //----------------------Global Variables----------------//
 
-var hero = [0, 0, 0]
-var bully = [1, 1, 1]
+var hero = [0, 0, 0];
+var bully = [1, 1, 1];
+var storyIndex = 0;
 var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
 var dayIndex = 0;
 var todayIs = document.getElementById('TodayIs');
@@ -13,11 +14,52 @@ var textbox = document.getElementById('text-box');
 var textp = document.querySelector('#text-box > p');
 var next = document.querySelector('#text-box > button');
 
+
+//------------------------------------Story--------------------------------------//
+
+function story () {
+    var storyText = ["Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
+    if (storyIndex < storyText.length-1) {
+        storyIndex = ++storyIndex;        
+        var next = document.querySelector('#text-box > button');
+        var textbox = document.getElementById('text-box');
+        textbox.removeChild(next);
+        textp.textContent = storyText[storyIndex];
+        var next = document.createElement('button');
+        next.textContent = 'Next';
+        textp.appendChild(next);
+        next.addEventListener('click', story);
+    } else if (storyIndex === 1) {
+        var throwdown = document.createElement('button');
+        throwdown.textContent = "Let's go right now!";
+        textp.appendChild(throwdown);
+        throwdown.addEventListener = runFight;
+    }
+    else {
+        begin();
+    }
+    // for (i = 0; storyIndex < storyText.length; i++) {
+    //     storyIndex = storyIndex += i;
+    
+    // textbox.removeChild(next);
+    // var next = document.createElement('button');
+    // next.textContent = Next;
+    // 
+    // 
+    // 
+    // }
+}
+
+next.addEventListener('click', story);
+
+function begin () {
+
+}
 //------------------------Global Button Eventlistners----------------------//
+
 library.addEventListener('click', upgradeLibrary);
 gym.addEventListener('click', upgradeGym);
 work.addEventListener('click', upgradeWork);
-
 library.addEventListener('click', runLibrary);
 gym.addEventListener('click',runGym);
 work.addEventListener('click', runWork);
@@ -84,7 +126,7 @@ function upgradeGym () {
 
 function upgradeWork () {
     console.log(hero[2]);
-    hero[0] = hero[2] +=2;
+    hero[2] = hero[2] +=2;
     console.log(hero[2]);
 }
 
@@ -109,7 +151,6 @@ function newDay () {
     textbox.appendChild(newDayText);
 
 }
-
 
 //if statement
 //incremetn counter
