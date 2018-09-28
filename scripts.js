@@ -1,9 +1,10 @@
 //----------------------Global Variables----------------//
 
 var hero = [0, 0, 0];
+var heroIndex = 0;
 var bully = [1, 1, 1];
 var storyIndex = 0;
-var storyText = ["Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
+var storyText = ["You're a 4th grader chill'n at recess when that bully walks up to you.", "Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
 var dayIndex = 0;
 var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
 var todayIs = document.getElementById('TodayIs');
@@ -17,30 +18,52 @@ var next = document.getElementById('Next');
 
 //------------------------------------Story--------------------------------------//
 
-function story () {
-    if (storyIndex < storyText.length - 1) {
-        console.log(storyIndex);
-        storyIndex = ++storyIndex;
-        console.log(storyIndex);
-        var next = document.getElementById('Next');
-        var textp = document.querySelector('#text-box > p');
-        textp.textContent = storyText[storyIndex];
-        next.addEventListener('click', story);
+     function story () {
+       
+        if (storyIndex < storyText.length-1) {
+            var next = document.getElementById('Next');
+            var textp = document.querySelector('#text-box > p');
+            textp.textContent = storyText[storyIndex];
+            console.log(storyIndex);
+            storyIndex = ++storyIndex;
+            console.log(storyIndex);
+            next.addEventListener('click', story); 
+            console.log('check1');
         
-    } else if (storyIndex === storyText.length) {
-        console.log('check1');
-        var textp = document.querySelector('#text-box > p');
-        var next = document.getElementById('Next');
-        var throwdown = document.createElement('button');
-        throwdown.textContent = '"Let\'s go right now!"';
-        textp.appendChild(throwdown);
-        storyIndex = ++storyIndex;
-        throwdown.addEventListener = runFight;
-        next.addEventListener('click', story);
-    } else {
-        begin();
+        }else if (storyIndex === 2) {
+            console.log('check2');
+            var textp = document.querySelector('#text-box > p');
+            var next = document.getElementById('Next');
+            var throwdown = document.createElement('button');
+            throwdown.textContent = '"Leeeroooy, Jeeenkiiins!"';
+            textp.textContent = storyText[storyIndex];
+            textp.appendChild(throwdown);
+            storyIndex = ++storyIndex;
+            throwdown.addEventListener ('click', runFight);
+            next.addEventListener('click', story);
+        }
     }
-}
+// if (storyIndex < storyText.length-1) {
+//     storyIndex = ++storyIndex;        
+//     var next = document.getElementById('Next');
+//     var textbox = document.getElementById('text-box');
+//     textbox.removeChild(next);
+//     textp.textContent = storyText[storyIndex];
+//     var next = document.createElement('button');
+//     next.textContent = 'Next';
+//     textp.appendChild(next);
+//     next.addEventListener('click', story);
+// } else if (storyIndex === 1) {
+//     var throwdown = document.createElement('button');
+//     throwdown.textContent = "Let's go right now!";
+//     textp.appendChild(throwdown);
+//     textbox.removeChild(next);
+//     textbox.removeChile(textp);
+//     throwdown.addEventListener('click', runFight);
+//     } else {
+//         begin();
+//     }
+// }
 
 function begin () {
 
@@ -51,7 +74,7 @@ next.addEventListener('click', story);
 library.addEventListener('click', runLibrary);
 gym.addEventListener('click',runGym);
 work.addEventListener('click', runWork);
-fight.addEventListener('click', runFight);
+// fight.addEventListener('click', runFight);
 
 //----------------------Functions------------------------//
 function runLibrary () {
@@ -82,7 +105,22 @@ function runWork () {
 }
 
 function runFight () {
+    console.log('fight1');
+    for (var i = 0; heroIndex < 4; i++) {
 
+        if (hero[heroIndex] > bully[heroIndex]) {
+            win();
+            console.log('fight2');
+        } else if (heroIndex === 3){
+            lose();
+        }else {
+            heroIndex = ++heroIndex;
+            console.log(heroIndex);
+        }
+        console.log(heroIndex);
+        
+       
+    }
 }
 
 function proceedStoryLibrary () {
@@ -97,16 +135,21 @@ function proceedStoryLibrary () {
     next.onclick = newDay;
 }
 
-function fridayFight () {
-
+function win () {
+    var textp = document.querySelector('#text-box > p');
+    textp.textContent = 'You Win';
 }
 
+function lose () {
+    var textp = document.querySelector('#text-box > p');
+    textp.textContent = 'You Lose';
+}
 //---------------------New Day Functions------------------->
 
 function newDay () {
     dayIndex = ++dayIndex;
     if (dayIndex === day.length) {
-        fridayFight();
+        runFight();
     }
     console.log(dayIndex);
     var textp = document.querySelector('#text-box > p');
