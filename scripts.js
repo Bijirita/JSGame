@@ -3,8 +3,8 @@
 var hero = [0, 0, 0];
 var bully = [1, 1, 1];
 var storyIndex = 0;
-var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
 var dayIndex = 0;
+var day = ["Monday", "Teusday", "Wednesday", "Thursday", "Friday"];
 var todayIs = document.getElementById('TodayIs');
 var library = document.getElementById('Library');
 var gym = document.getElementById('Gym');
@@ -19,34 +19,28 @@ var next = document.querySelector('#text-box > button');
 
 function story () {
     var storyText = ["Bully: I'm kicking your ass on Friday.", "How do you Proceed?"];
-    if (storyIndex < storyText.length-1) {
-        storyIndex = ++storyIndex;        
+    
+    if (storyIndex < storyText.length - 1) {
+        console.log(storyIndex);
+        storyIndex = ++storyIndex;
         var next = document.querySelector('#text-box > button');
         var textp = document.querySelector('#text-box > p');
-        var textbox = document.getElementById('text-box');
-        textbox.removeChild(next);
-        textbox.removeChild(textp);
-        var textp = document.createElement('p')
         textp.textContent = storyText[storyIndex];
-        textbox.appendChild(textp)
-        var next = document.createElement('button');
-        next.textContent = 'Next';
-        textbox.appendChild(next);
         next.addEventListener('click', story);
-    } else if (storyIndex === 1) {
-        var textbox = document.querySelector('#text-box > p');
+        console.log(storyIndex);
+    } else if (storyIndex === storyText.length) {
         var textp = document.querySelector('#text-box > p');
         var next = document.querySelector('#textp > button');
-        textp.removeChild(next);
-        throwdown.textContent = "Let's go right now!";
+        var throwdown = document.createElement('button');
+        throwdown.textContent = '"Let\'s go right now!"';
         textp.appendChild(throwdown);
-        throwdown.addEventListener = runFight;
         storyIndex = ++storyIndex;
-        next.addEventListener('click', story);
+        throwdown.addEventListener = runFight;
     }
     else {
         begin();
     }
+
     // for (i = 0; storyIndex < storyText.length; i++) {
     //     storyIndex = storyIndex += i;
     
