@@ -22,18 +22,27 @@ function story () {
     if (storyIndex < storyText.length-1) {
         storyIndex = ++storyIndex;        
         var next = document.querySelector('#text-box > button');
+        var textp = document.querySelector('#text-box > p');
         var textbox = document.getElementById('text-box');
         textbox.removeChild(next);
+        textbox.removeChild(textp);
+        var textp = document.createElement('p')
         textp.textContent = storyText[storyIndex];
+        textbox.appendChild(textp)
         var next = document.createElement('button');
         next.textContent = 'Next';
-        textp.appendChild(next);
+        textbox.appendChild(next);
         next.addEventListener('click', story);
     } else if (storyIndex === 1) {
-        var throwdown = document.createElement('button');
+        var textbox = document.querySelector('#text-box > p');
+        var textp = document.querySelector('#text-box > p');
+        var next = document.querySelector('#textp > button');
+        textp.removeChild(next);
         throwdown.textContent = "Let's go right now!";
         textp.appendChild(throwdown);
         throwdown.addEventListener = runFight;
+        storyIndex = ++storyIndex;
+        next.addEventListener('click', story);
     }
     else {
         begin();
