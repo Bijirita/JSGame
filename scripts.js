@@ -90,7 +90,6 @@ function runFight () {
         console.log('hero ' + hero);
         if (hero[heroIndex] > bully[heroIndex]) {
            return win();
-            console.log('fight2');
         }else if (heroIndex === 2) {
            return lose();
         }else {
@@ -98,8 +97,6 @@ function runFight () {
             console.log(heroIndex);
         }
         console.log(heroIndex);
-        
-       
     }
 }
 
@@ -165,3 +162,6 @@ function newDay () {
     console.log('hero ' + hero);
     }
 }
+
+var bullyIndex = getRandomInt(15);
+console.log(bullyIndex);
