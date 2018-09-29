@@ -86,7 +86,8 @@ function runWork () {
 function runFight () {
     console.log('fight1');
     for (var i = 0; heroIndex <= 2; i++) {
-        console.log(heroIndex);
+        console.log('heroindex ' + heroIndex);
+        console.log('hero ' + hero);
         if (hero[heroIndex] > bully[heroIndex]) {
            return win();
             console.log('fight2');
@@ -144,8 +145,8 @@ function newDay () {
     var options = document.getElementById('interactions');
     options.style.display = "inline-block";
     if (dayIndex === day.length) {
-        runFight();
-    } else if (dayIndex <= 3) {
+        return runFight();
+    } else if (dayIndex <= day.length - 1) {
     console.log(dayIndex);
     var textp = document.querySelector('#text-box > p');
     var next = document.querySelector('#text-box > button');
@@ -161,5 +162,6 @@ function newDay () {
     next.style.display = "none";
     textp.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     dayIndex = ++dayIndex;
+    console.log('hero ' + hero);
     }
 }
