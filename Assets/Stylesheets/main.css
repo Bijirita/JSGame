@@ -12,9 +12,12 @@ body {
     background: green;
 }
 
+#interactions {
+    display: none;
+}
+
 .interaction-window button {
     width: 60px;
-    display: none;
 }
 
 .text-window {

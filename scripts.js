@@ -43,10 +43,7 @@ var next = document.getElementById('Next');
             textp.appendChild(throwdown);
             storyIndex = ++storyIndex;
             throwdown.addEventListener ('click', runFight);
-            //textbox.removeChild(next);
             next.textContent = 'See you Friday';
-            // next.nodeValue = "See you Friday.";
-            //document.getElementById('text-box').innerHTML = <button>"See you Friday"</button>;
             next.addEventListener('click', newDay);
         }
     }
@@ -132,11 +129,10 @@ function lose () {
 function newDay () {
     console.log('newday');
     var options = document.getElementById('interactions');
-    options.style.display = "flex";
-    dayIndex = ++dayIndex;
+    options.style.display = "inline-block";
     if (dayIndex === day.length) {
         runFight();
-    } else if (dayIndex < day.length) {
+    } else if (dayIndex <= 3) {
     console.log(dayIndex);
     var textp = document.querySelector('#text-box > p');
     var next = document.querySelector('#text-box > button');
@@ -146,5 +142,6 @@ function newDay () {
     var newDayText = document.createElement('p');
     newDayText.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     textbox.appendChild(newDayText);
+    dayIndex = ++dayIndex;
     }
 }
