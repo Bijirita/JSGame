@@ -34,7 +34,6 @@ var next = document.getElementById('Next');
         
         }else if (storyIndex === 2) {
             console.log('check2');
-            var textbox = document.getElementById('text-box');
             var textp = document.querySelector('#text-box > p');
             var next = document.getElementById('Next');
             var throwdown = document.createElement('button');
@@ -59,15 +58,15 @@ work.addEventListener('click', runWork);
 //----------------------Functions------------------------//
 function runLibrary () {
     console.log('checkpoint 1');
+    removeEar();
     hero[0] = hero[0] +=2;
-    textp.parentNode.removeChild(textp);
+    var textbox = document.getElementById('text-box');
+    var next = document.getElementById('Next');
+    var textp = document.querySelector('#text-box > p');
     console.log('checkpoint 2')
-    var actionLibrary = document.createElement('p');
-    actionLibrary.textContent = "you go do the library thing"
-    textbox.appendChild(actionLibrary);
-    library.removeEventListener('click', runLibrary);
-    textbox.appendChild(next);
-    next.addEventListener('click', proceedStoryLibrary);
+    textp.textContent = "you go do the library thing"
+    next.style.display = "inline-block";
+    next.textContent = "Next";
     next.addEventListener('click', newDay);
     console.log('checkpoint 3');
 }
@@ -103,6 +102,20 @@ function runFight () {
     }
 }
 
+function addEar () {
+    library.addEventListener ('click', runLibrary);
+    gym.addEventListener ('click', runGym);
+    work.addEventListener ('click', runWork);
+    fight.addEventListener ('click', runFight);
+}
+
+function removeEar () {
+    library.removeEventListener ('click', runLibrary);
+    gym.removeEventListener ('click', runGym);
+    work.removeEventListener ('click', runWork);
+    fight.removeEventListener ('click', runFight);
+}
+
 function proceedStoryLibrary () {
     var textp = document.querySelector('#text-box > p');
     console.log('checkpoint 4');
@@ -136,12 +149,17 @@ function newDay () {
     console.log(dayIndex);
     var textp = document.querySelector('#text-box > p');
     var next = document.querySelector('#text-box > button');
+    var library = document.getElementById('Library');
+    var gym = document.getElementById('Gym');
+    var work = document.getElementById('Work');
+    var fight = document.getElementById('Fight');
+    library.addEventListener ('click', runLibrary);
+    gym.addEventListener ('click', runGym);
+    work.addEventListener ('click', runWork);
+    fight.addEventListener ('click', runFight);
     console.log("dayIndex " + dayIndex);
-    textbox.removeChild(textp);
-    textbox.removeChild(next);
-    var newDayText = document.createElement('p');
-    newDayText.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
-    textbox.appendChild(newDayText);
+    next.style.display = "none";
+    textp.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
     dayIndex = ++dayIndex;
     }
 }
