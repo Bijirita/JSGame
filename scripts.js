@@ -163,5 +163,26 @@ function newDay () {
     }
 }
 
-var bullyIndex = getRandomInt(15);
-console.log(bullyIndex);
+
+// var matTest = Math.floor(Math.random() * (2 - 0 + 1));
+// var bullyNum = Math.floor(Math.random() * 3);
+// console.log("check1 matTest is " + matTest);
+// console.log("check 2BNtest is " + bullyNum);
+
+bullySet();
+
+function bullySet () {
+    var bully = [1, 1, 1];
+    var bullyIndex = Math.floor(Math.random() * 12) + 3;
+    console.log(bullyIndex);
+    for (var i = 0; i < bullyIndex; i++) {
+        var bArray = [Math.floor(Math.random() * 3)];
+        console.log("check bArray is " + bArray);
+        bully[bArray] +=  1;
+        console.log(bully);
+        console.log("check4 bArray is now " + bArray); 
+    }
+    
+
+}
+
