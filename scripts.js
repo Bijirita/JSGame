@@ -68,7 +68,7 @@ function runGym () {
     hero[1] = hero[1] +=2;
     var next = document.getElementById('Next');
     var textp = document.querySelector('#text-box > p');
-    textp.textContent = "you go do the library thing"
+    textp.textContent = "you go do the gym thing"
     next.style.display = "inline-block";
     next.textContent = "Next";
     next.addEventListener('click', newDay);
@@ -79,7 +79,7 @@ function runWork () {
     hero[2] = hero[2] +=2;
     var next = document.getElementById('Next');
     var textp = document.querySelector('#text-box > p');
-    textp.textContent = "you go do the library thing"
+    textp.textContent = "you go do the work thing"
     next.style.display = "inline-block";
     next.textContent = "Next";
     next.addEventListener('click', newDay)
@@ -157,16 +157,19 @@ function newDay () {
     }
 }
 
+bullySet();
+
 function bullySet () {
     var bullyIndex = Math.floor(Math.random() * 12) + 3;
     for (var i = 0; i < bullyIndex; i++) {
         var bArray = [Math.floor(Math.random() * 3)];
         bully[bArray] +=  1;
-        window.j = bully;
+        Window.bully = bully;
     }
 }
-
+console.log("global bully is now " + bully);
 function restart () {
     removeEar ();
+
 
 }
