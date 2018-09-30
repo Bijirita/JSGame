@@ -125,13 +125,13 @@ function proceedStoryLibrary () {
 function win () {
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Win';
-    next.textContent = "Restart?";
+    restart ();
 }
 
 function lose () {
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Lose';
-    next.textContent = "Restart?";
+    restart ();
 }
 //---------------------New Day Functions------------------->
 
@@ -168,8 +168,16 @@ function bullySet () {
     }
 }
 console.log("global bully is now " + bully);
+
 function restart () {
+    var next = document.getElementById('Next');
+    next.textContent = "Restart?";
+    next.removeEventListener ('click', newDay);
+    next.removeEventListener('click', story);
     removeEar ();
+
+
+
 
 
 }
