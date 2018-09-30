@@ -162,5 +162,11 @@ function bullySet () {
     for (var i = 0; i < bullyIndex; i++) {
         var bArray = [Math.floor(Math.random() * 3)];
         bully[bArray] +=  1;
+        window.j = bully;
     }
+}
+
+function restart () {
+    removeEar ();
+
 }
