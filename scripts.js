@@ -157,7 +157,7 @@ function newDay () {
     }
 }
 
-bullySet();
+bullySet ();
 
 function bullySet () {
     var bullyIndex = Math.floor(Math.random() * 12) + 3;
@@ -170,14 +170,12 @@ function bullySet () {
 console.log("global bully is now " + bully);
 
 function restart () {
+    removeEar ();
+    bullySet ();
     var next = document.getElementById('Next');
+    // var textbox = document.getElementById('text-box');
     next.textContent = "Restart?";
     next.removeEventListener ('click', newDay);
-    next.removeEventListener('click', story);
-    removeEar ();
-
-
-
-
-
+    next.addEventListener('click', story);
+    
 }
