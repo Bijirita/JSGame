@@ -125,13 +125,17 @@ function proceedStoryLibrary () {
 function win () {
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Win';
-    restart ();
+    next.textContent = 'Restart';
+    next.addEventListener('click', restart);
+    
 }
 
 function lose () {
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Lose';
-    restart ();
+    next.textContent = 'Restart';
+    next.addEventListener('click', restart);
+    
 }
 //---------------------New Day Functions------------------->
 
@@ -171,11 +175,12 @@ console.log("global bully is now " + bully);
 
 function restart () {
     removeEar ();
+    Window.bully = bully[0, 0, 0];
     bullySet ();
     var next = document.getElementById('Next');
     // var textbox = document.getElementById('text-box');
-    next.textContent = "Restart?";
     next.removeEventListener ('click', newDay);
     next.addEventListener('click', story);
+    console.log("global bully is now " + bully);
     
 }
