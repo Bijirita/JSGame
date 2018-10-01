@@ -38,24 +38,27 @@ function story () {
     if (storyIndex < 1) {
         next = document.getElementById('Next');
         textp = document.querySelector('#text-box > p');
+        next.textContent = 'Next';
         ++storyIndex;
         textp.textContent = storyText[storyIndex];
         next.addEventListener('click', story);
-        console.log('storyIndex is ' + storyIndex);
+        console.log('1storyIndex is ' + storyIndex);
         
     }else if (storyIndex >= 1) {
         ++storyIndex;
+        console.log('2storyIndex is ' + storyIndex);
         textp = document.querySelector('#text-box > p');
         next = document.getElementById('Next');
-        var throwdown = document.createElement('button');
-        throwdown.textContent = '"Leeeroooy, Jeeenkiiins!"';            
+        var leroyJenkins = document.createElement('button');
+        leroyJenkins.textContent = '"Leeeroooy, Jeeenkiiins!"';            
         textp.textContent = storyText[storyIndex];
-        textp.appendChild(throwdown);
+        textp.appendChild(leroyJenkins);
         ++storyIndex;
-        throwdown.addEventListener ('click', runFight);
+        leroyJenkins.addEventListener ('click', runFight);
         next.textContent = '"See you Friday."';
-        next.addEventListener('click', newDay);
-        console.log('storyIndex is ' + storyIndex);
+        console.log('3storyIndex is ' + storyIndex);
+        return next.addEventListener('click', newDay);
+        
         }
     }
 
@@ -130,7 +133,7 @@ function proceedStoryLibrary () {
 
 function win () {
     removeEar ();
-    var textp = document.querySelector('#text-box > p');
+    textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Win';
     next.style.display = "inline-block";
     next.textContent = 'Restart';
@@ -140,7 +143,7 @@ function win () {
 
 function lose () {
     removeEar ();
-    var textp = document.querySelector('#text-box > p');
+    textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Lose';
     next.style.display = "inline-block";
     next.textContent = 'Restart';
@@ -163,7 +166,7 @@ function newDay () {
         addEar ();
         next.style.display = "none";
         textp.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
-        dayIndex = ++dayIndex;
+        ++dayIndex;
         console.log('day index is ' + dayIndex);
     }
 }
@@ -190,6 +193,7 @@ function restart () {
     storyIndex = 0;
     dayIndex = 0;
     console.log('restart day index is ' + dayIndex);
+    console.log('restart story index is ' + storyIndex);
     bullySet ();
     next.addEventListener ('click', story);
 }
