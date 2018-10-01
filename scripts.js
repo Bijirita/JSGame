@@ -49,7 +49,7 @@ next.addEventListener('click', story);
 library.addEventListener('click', runLibrary);
 gym.addEventListener('click',runGym);
 work.addEventListener('click', runWork);
-// fight.addEventListener('click', runFight);
+fight.addEventListener('click', runFight);
 
 //----------------------Functions------------------------//
 function runLibrary () {
@@ -86,11 +86,10 @@ function runWork () {
 }
 
 function runFight () {
-    bullySet ();
-    for (var i = 0; heroIndex <= 2; i++) {
+    for (var i = 0; heroIndex <= 3; i++) {
         if (hero[heroIndex] > bully[heroIndex]) {
            return win();
-        }else if (heroIndex === 2) {
+        }else if (heroIndex === 3) {
            return lose();
         }else {
             heroIndex = ++heroIndex;
@@ -133,6 +132,7 @@ function win () {
 function lose () {
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Lose';
+    next.style.display = "inline-block";
     next.textContent = 'Restart';
     next.addEventListener('click', restart);
     
@@ -169,19 +169,24 @@ function bullySet () {
         var bArray = [Math.floor(Math.random() * 3)];
         bully[bArray] +=  1;
         Window.bully = bully;
+        console.log("bully reset check");
     }
 }
 console.log("global bully is now " + bully);
 
 function restart () {
+    var library = document.getElementById('Library');
+    var gym = document.getElementById('Gym');
+    var work = document.getElementById('Work');
+    var fight = document.getElementById('Fight');
     removeEar ();
-    var bully = [0, 0, 0];
+    var dayIndex = 0;
+    Window.dayIndex = dayIndex;
     var next = document.getElementById('Next');
-    Window.bully = bully[0, 0, 0];
-    next.removeEventListener ('click', newDay);
-    next.addEventListener('click', story);
-    bullySet ();
-    console.log("zero bully is now " + bully);
+    next.addEventListener ('click', newDay);
+    // next.addEventListener('click', story);
+    console.log("zero bully is now " + Window.bully);
+    console.log('day index is ' + dayIndex);
     // var textbox = document.getElementById('text-box');
     
     
