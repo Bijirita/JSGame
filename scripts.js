@@ -17,6 +17,7 @@ var textbox = document.getElementById('text-box');
 var textp = document.querySelector('#text-box > p');
 var next = document.getElementById('Next');
 
+
 //------------------------------------Story--------------------------------------//
 
      function story () {
@@ -122,6 +123,7 @@ function proceedStoryLibrary () {
 }
 
 function win () {
+    removeEar ();
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Win';
     next.textContent = 'Restart';
@@ -130,6 +132,7 @@ function win () {
 }
 
 function lose () {
+    removeEar ();
     var textp = document.querySelector('#text-box > p');
     textp.textContent = 'You Lose';
     next.style.display = "inline-block";
@@ -179,7 +182,6 @@ function restart () {
     gym.removeEventListener ('click', runGym);
     work.removeEventListener ('click', runWork);
     fight.removeEventListener ('click', runFight);
-    removeEar ();
     var dayIndex = 0;
     Window.dayIndex = dayIndex;
     var next = document.getElementById('Next');
