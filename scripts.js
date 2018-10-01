@@ -4,7 +4,7 @@ var hero = [0, 0, 0];
 var heroIndex = 0;
 var bully = [0, 0, 0];
 var storyIndex = 0;
-var dayIndex = 0;
+// var dayIndex = 0;
 
 //-----------------Texts Arrays------------------------------//
 var storyText = ["You're a 4th grader chill'n at recess when that bully walks up to you.", "Bully: I'm kicking your ass on Friday.", "How do you respond?"];
@@ -57,7 +57,9 @@ function story () {
         leroyJenkins.addEventListener ('click', runFight);
         next.textContent = '"See you Friday."';
         console.log('3storyIndex is ' + storyIndex);
-        return next.addEventListener('click', newDay);
+        return next.addEventListener('click', function() {
+
+            newDay(0) });
         
         }
     }
@@ -151,7 +153,7 @@ function lose () {
     next.addEventListener('click', restart);
 }
 
-function newDay () {
+function newDay (dayIndex) {
     var options = document.getElementById('interactions');
     options.style.display = "inline-block";
     if (dayIndex === day.length) {
@@ -186,6 +188,8 @@ function bullySet () {
 function restart () {
     next = document.getElementById('Next');
     next.removeEventListener ('click', restart);
+    next.removeEventListener ('click', newDay);
+
     removeEar ();
     hero = [0, 0, 0];
     heroIndex = 0;
@@ -197,3 +201,48 @@ function restart () {
     bullySet ();
     next.addEventListener ('click', story);
 }
+
+const div = document.querySelector("div");
+let button = 'hola';
+
+div.addEventListener("click", function(event) {
+    button = event.target;
+  // console.log(button);
+  MasterControl();
+});
+
+const MasterControl = function () {
+  const play = document.getElementById("play"),
+    stop = document.getElementById("stop");
+  
+  if ( button === play) {
+      console.log('Im the play button');
+  } else {
+    console.log("I should be stop");
+  }
+}
+
+#play {
+    background-color: green;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: block;
+    margin: 20px;
+  }
+  #stop {
+    background-color: red;
+    border: 0;
+      color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: block;
+    margin: 20px;
+  }
+
+  <div>
+  <button id="play">play</button>
+  <button id="stop">stop</button>
+</div>
+
