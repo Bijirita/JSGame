@@ -175,10 +175,10 @@ function bullySet () {
 console.log("global bully is now " + bully);
 
 function restart () {
-    var library = document.getElementById('Library');
-    var gym = document.getElementById('Gym');
-    var work = document.getElementById('Work');
-    var fight = document.getElementById('Fight');
+    library.removeEventListener ('click', runLibrary);
+    gym.removeEventListener ('click', runGym);
+    work.removeEventListener ('click', runWork);
+    fight.removeEventListener ('click', runFight);
     removeEar ();
     var dayIndex = 0;
     Window.dayIndex = dayIndex;
