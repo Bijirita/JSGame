@@ -2,7 +2,7 @@
 var options = document.getElementById('interactions');
 var hero = [0, 0, 0];
 var heroIndex = 0;
-var bully = [1, 1, 1];
+var bully = [0, 0, 0];
 var storyIndex = 0;
 var storyText = ["You're a 4th grader chill'n at recess when that bully walks up to you.", "Bully: I'm kicking your ass on Friday.", "How do you respond?"];
 var dayIndex = 0;
@@ -175,12 +175,14 @@ console.log("global bully is now " + bully);
 
 function restart () {
     removeEar ();
-    Window.bully = bully[0, 0, 0];
-    bullySet ();
+    var bully = [0, 0, 0];
     var next = document.getElementById('Next');
-    // var textbox = document.getElementById('text-box');
+    Window.bully = bully[0, 0, 0];
     next.removeEventListener ('click', newDay);
     next.addEventListener('click', story);
-    console.log("global bully is now " + bully);
+    bullySet ();
+    console.log("zero bully is now " + bully);
+    // var textbox = document.getElementById('text-box');
+    
     
 }
