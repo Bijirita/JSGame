@@ -36,16 +36,17 @@ fight.addEventListener('click', runFight);
 function story () {
        
     if (storyIndex < 1) {
-        var next = document.getElementById('Next');
-        var textp = document.querySelector('#text-box > p');
+        next = document.getElementById('Next');
+        textp = document.querySelector('#text-box > p');
         ++storyIndex;
         textp.textContent = storyText[storyIndex];
         next.addEventListener('click', story);
+        console.log('storyIndex is ' + storyIndex);
         
     }else if (storyIndex >= 1) {
         ++storyIndex;
-        var textp = document.querySelector('#text-box > p');
-        var next = document.getElementById('Next');
+        textp = document.querySelector('#text-box > p');
+        next = document.getElementById('Next');
         var throwdown = document.createElement('button');
         throwdown.textContent = '"Leeeroooy, Jeeenkiiins!"';            
         textp.textContent = storyText[storyIndex];
@@ -54,14 +55,15 @@ function story () {
         throwdown.addEventListener ('click', runFight);
         next.textContent = '"See you Friday."';
         next.addEventListener('click', newDay);
+        console.log('storyIndex is ' + storyIndex);
         }
     }
 
 function runLibrary () {
     removeEar();
     hero[0] = hero[0] +=2;
-    var next = document.getElementById('Next');
-    var textp = document.querySelector('#text-box > p');
+    next = document.getElementById('Next');
+    textp = document.querySelector('#text-box > p');
     textp.textContent = "you go do the library thing"
     next.style.display = "inline-block";
     next.textContent = "Next";
@@ -71,8 +73,8 @@ function runLibrary () {
 function runGym () {
     removeEar();
     hero[1] +=2;
-    var next = document.getElementById('Next');
-    var textp = document.querySelector('#text-box > p');
+    next = document.getElementById('Next');
+    textp = document.querySelector('#text-box > p');
     textp.textContent = "you go do the gym thing"
     next.style.display = "inline-block";
     next.textContent = "Next";
@@ -82,8 +84,8 @@ function runGym () {
 function runWork () {
     removeEar();
     hero[2] +=2;
-    var next = document.getElementById('Next');
-    var textp = document.querySelector('#text-box > p');
+    next = document.getElementById('Next');
+    textp = document.querySelector('#text-box > p');
     textp.textContent = "you go do the work thing"
     next.style.display = "inline-block";
     next.textContent = "Next";
@@ -117,7 +119,7 @@ function removeEar () {
 }
 
 function proceedStoryLibrary () {
-    var textp = document.querySelector('#text-box > p');
+    textp = document.querySelector('#text-box > p');
     textbox.removeChild(textp);
     var brainText = document.createElement('p');
     brainText.textContent = "you feel your brain foldy fold";
@@ -132,8 +134,8 @@ function win () {
     textp.textContent = 'You Win';
     next.style.display = "inline-block";
     next.textContent = 'Restart';
+    next.removeEventListener ('click', newDay);
     next.addEventListener('click', restart);
-    
 }
 
 function lose () {
@@ -142,8 +144,8 @@ function lose () {
     textp.textContent = 'You Lose';
     next.style.display = "inline-block";
     next.textContent = 'Restart';
+    next.removeEventListener ('click', newDay);
     next.addEventListener('click', restart);
-    
 }
 
 function newDay () {
@@ -152,16 +154,17 @@ function newDay () {
     if (dayIndex === day.length) {
         return runFight();
     } else if (dayIndex <= day.length - 1) {
-    var textp = document.querySelector('#text-box > p');
-    var next = document.querySelector('#text-box > button');
-    var library = document.getElementById('Library');
-    var gym = document.getElementById('Gym');
-    var work = document.getElementById('Work');
-    var fight = document.getElementById('Fight');
-    addEar ();
-    next.style.display = "none";
-    textp.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
-    dayIndex = ++dayIndex;
+        var textp = document.querySelector('#text-box > p');
+        var next = document.querySelector('#text-box > button');
+        var library = document.getElementById('Library');
+        var gym = document.getElementById('Gym');
+        var work = document.getElementById('Work');
+        var fight = document.getElementById('Fight');
+        addEar ();
+        next.style.display = "none";
+        textp.textContent = 'Today is ' + day[dayIndex] + ' how will you spend your day?';
+        dayIndex = ++dayIndex;
+        console.log('day index is ' + dayIndex);
     }
 }
 
@@ -172,22 +175,21 @@ function bullySet () {
     for (var i = 0; i < bullyIndex; i++) {
         var bArray = [Math.floor(Math.random() * 3)];
         bully[bArray] +=  1;
-        Window.bully = bully;
-        console.log("bully reset check");
-        console.log("global bully is now " + bully);
     }
+    console.log("bully reset check");
+    console.log("global bully is now " + bully);
 }
-console.log("global bully is now " + bully);
 
 function restart () {
+    next = document.getElementById('Next');
+    next.removeEventListener ('click', restart);
     removeEar ();
     hero = [0, 0, 0];
     heroIndex = 0;
     bully = [0, 0, 0];
     storyIndex = 0;
     dayIndex = 0;
-    next = document.getElementById('Next');
-    next.addEventListener ('click', story);
-    console.log('day index is ' + dayIndex);
+    console.log('restart day index is ' + dayIndex);
     bullySet ();
+    next.addEventListener ('click', story);
 }
