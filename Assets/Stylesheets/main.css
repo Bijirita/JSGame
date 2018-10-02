@@ -32,6 +32,7 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
+    display: none;
 }
 
 #TodayIs {
@@ -57,5 +58,8 @@ body {
 #text-box button {
 margin-left: 10px;
 height: 21px;
-display: none;
+}
+
+#Restart {
+    display: none;
 }

@@ -44,7 +44,7 @@ interactions.restart.addEventListener('click', restart);
 //-------------------------Functions------------------//
 
 function story (skill){
-
+    console.log("story initiated");
 }
 
 function setVillainStat () {
