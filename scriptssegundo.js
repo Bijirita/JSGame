@@ -20,12 +20,13 @@ let messageHolder = {
 }
 
 let message = {
-    story: ['Story Stuff', 'Conflict stuff', 'choices'],
+    story: ["You're the new kid on the block", "First day of school", 
+        'Shoe walks up and says: "We fight friday!"', "How do you respond?"],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
 //----------------------------Action Event Listeners---------------------//
 
-Actions.addEventListener('click', function (event) {
+interactions.actions.addEventListener('click', function (event) {
     if (event === interactions.library){
         console.log(event.target);
         upgradeHeroSkill (skill);
@@ -44,7 +45,10 @@ interactions.restart.addEventListener('click', restart);
 //-------------------------Functions------------------//
 
 function story (skill){
-    console.log("story initiated");
+    for (var i = 0; i < message.story.length - 1; i++) {
+        
+    }
+
 }
 
 function setVillainStat () {
