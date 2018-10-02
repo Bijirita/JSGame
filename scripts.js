@@ -211,38 +211,38 @@ div.addEventListener("click", function(event) {
   MasterControl();
 });
 
-const MasterControl = function () {
-  const play = document.getElementById("play"),
-    stop = document.getElementById("stop");
+// const MasterControl = function () {
+//   const play = document.getElementById("play"),
+//     stop = document.getElementById("stop");
   
-  if ( button === play) {
-      console.log('Im the play button');
-  } else {
-    console.log("I should be stop");
-  }
-}
+//   if ( button === play) {
+//       console.log('Im the play button');
+//   } else {
+//     console.log("I should be stop");
+//   }
+// }
 
-#play {
-    background-color: green;
-    border: 0;
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    display: block;
-    margin: 20px;
-  }
-  #stop {
-    background-color: red;
-    border: 0;
-      color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    display: block;
-    margin: 20px;
-  }
+// #play {
+//     background-color: green;
+//     border: 0;
+//     color: white;
+//     font-weight: bold;
+//     padding: 10px 20px;
+//     display: block;
+//     margin: 20px;
+//   }
+//   #stop {
+//     background-color: red;
+//     border: 0;
+//       color: white;
+//     font-weight: bold;
+//     padding: 10px 20px;
+//     display: block;
+//     margin: 20px;
+//   }
 
-  <div>
-  <button id="play">play</button>
-  <button id="stop">stop</button>
-</div>
+//   <div>
+//   <button id="play">play</button>
+//   <button id="stop">stop</button>
+// </div>
 
