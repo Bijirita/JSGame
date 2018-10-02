@@ -4,8 +4,8 @@ let character = {
     villain: [1, 1, 1],
 }
 
-let action = {
-    interactions: document.getElementById('interactions'),
+let interactions = {
+    actions: document.getElementById('Actions'),
     library: document.getElementById('Library'),
     gym: document.getElementById('Gym'),
     work: document.getElementById('Work'),
@@ -23,29 +23,48 @@ let message = {
     story: ['Story Stuff', 'Conflict stuff', 'choices'],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
-//----------------------------Event Listeners---------------------//
+//----------------------------Action Event Listeners---------------------//
 
-action.next.addEventListener('click', story);
-action.library.addEventListener('click', upgrade);
-action.gym.addEventListener('click',upgrade);
-action.work.addEventListener('click', upgrade);
-action.fight.addEventListener('click', runFight);
-action.restart.addEventListener('click', restart);
+Actions.addEventListener('click', function (event) {
+    if (event === interactions.library){
+        console.log(event.target);
+        upgradeHeroSkill (skill);
+    } else if (event === interactions.gym){
+        console.log(event.target);
+        upgradeHeroSkill (skill);
+    } else if (event === interactions.work){
+        console.log(event.target);
+        upgradeHeroSkill (skill);    
+    }    
+});
+interactions.next.addEventListener('click', story);
+interactions.fight.addEventListener('click', runFight);
+interactions.restart.addEventListener('click', restart);
 
 //-------------------------Functions------------------//
 
-function story (){
+function story (skill){
 
 }
 
-function upgrade (stat) {
-    if (stat === library) {
-        ++hero[0];
-    } else if (stat === gym) {
-        ++hero[1];
-    } else if (stat === work) {
-        ++hero[2];
+function setVillainStat () {
+    let index = Math.floor(Math.random() * 12) + 3;
+    for (var i = 0; i < index; i++) {
+        let villainStat = [Math.floor(Math.random() * 3)];
+        character.villain[villainStat] +=  1;
+        console.log("villainstat is now " + character.villain)
     }
+}
+
+function upgradeHeroSkill (skill) {
+    if (skill === action.library) {
+        ++character.hero[0];
+    } else if (skill === action.gym) {
+        ++character.hero[1];
+    } else {
+        ++character.hero[2];
+    }
+    story (skill);
 }
 
 function runFight () {

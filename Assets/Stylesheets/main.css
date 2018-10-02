@@ -12,11 +12,7 @@ body {
     background: green;
 }
 
-#interactions {
-    display: none;
-}
-
-.interaction-window button {
+.interaction-window button{
     width: 60px;
 }
 
@@ -28,6 +24,29 @@ body {
 
 }
 
+#TodayBox {
+    height: 100px;
+    width: 100px;
+    margin-left: 500px;
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+#TodayIs {
+    background: white;
+    width: 60px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+#Actions {
+    display: none;
+}
+
 #text-box {
     display: flex;
     height: 150px;
@@ -35,16 +54,8 @@ body {
     background: blue;
 }
 
-#Restart {
-    display: none;
-}
-
-#Next {
+#text-box button {
 margin-left: 10px;
 height: 21px;
-
+display: none;
 }
-
-
-
-
