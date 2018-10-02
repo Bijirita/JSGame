@@ -4,7 +4,7 @@ let character = {
     villain: [1, 1, 1],
 }
 
-let interactions = {
+const interactions = {
     actions: document.getElementById('Actions'),
     library: document.getElementById('Library'),
     gym: document.getElementById('Gym'),
@@ -14,12 +14,12 @@ let interactions = {
     restart: document.getElementById('Restart'),
 }
 
-let messageHolder = {
+const messageHolder = {
     textbox: document.getElementById('text-box'),
     textp: document.querySelector('#text-box > p'),
 }
 
-let message = {
+const message = {
     story: ["You're the new kid on the block", "First day of school", 
         'Shoe walks up and says: "We fight friday!"', "How do you respond?"],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -44,9 +44,10 @@ interactions.restart.addEventListener('click', restart);
 
 //-------------------------Functions------------------//
 
-function story (skill){
-    for (var i = 0; i < message.story.length - 1; i++) {
-        
+function nextIndex (){
+    for (var i = 0; i < message.story.length; i++) {
+        messageHolder.textp.textContent = message.story[i];
+        console.log('1storyIndex is ' + i); 
     }
 
 }
