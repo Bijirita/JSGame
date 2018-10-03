@@ -44,7 +44,7 @@ body {
     align-items:center;
 }
 
-#Actions {
+#Actions button {
     display: none;
 }
 

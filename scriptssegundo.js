@@ -49,10 +49,11 @@ interactions.restart.addEventListener('click', restart);
 function proceed (current, story) {
     var idx = story.indexOf(current);
     if  (idx === message.story.length - 1) {
+        messageHolder.textbox.removeChild(textbox.next);
+        interactions.fight.style.display = "inline-block";
         console.log(idx);
-        return message.story[idx + 1];
     }
-    console.log(idx);
+    interactions.fight.style.display = "inline-block";
     return message.story[idx + 1];
 }
 
