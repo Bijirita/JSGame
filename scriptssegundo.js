@@ -40,16 +40,16 @@ interactions.actions.addEventListener('click', function(event) {
         upgradeHero (event);
     } else if (interactions.gym === event.target) {
         console.log('you clicked gym');
-        runActions (event);
+        upgradeHero (event);
     } else if (interactions.work === event.target) {
         console.log('you clicked work');
-        runActions (event);
+        upgradeHero (event);
     } else if (interactions.reset === event.target) {
         console.log('you clicked restart');
         runReset (event);
     } else if (interactions.fight === event.target) {
         console.log('you clicked fight');
-        funFight (event);
+        runFight ();
     }
 });
 
@@ -75,19 +75,26 @@ function setVillainStat () {
 
 function upgradeHero (event) {
     if (event.target === interactions.library) {
-        console.log('upgraded library');
+        console.log('you feel smortr');
         ++character.hero[0];
-    } else if (event === interactions.gym) {
-        console.log('upgraded gym');
+    } else if (event.target === interactions.gym) {
+        console.log('you feel stronkr');
         ++character.hero[1];
     } else {
-        console.log('upgraded work');
+        console.log('you feel rechr');
         ++character.hero[2];  
     }    
 };
 
-function runFight (event) {
-    console.log("you made it to runFight fxn");   
+function runFight () {
+    console.log("you made it to runFight fxn");
+    for (var i = 0; heroIndex <= 3; i++) {
+        if (hero[heroIndex] > bully[heroIndex]) {
+           return win();
+        }else if (heroIndex === 3) {
+           return lose();
+        }
+    }   
 }
 
 function runActions (event) {
