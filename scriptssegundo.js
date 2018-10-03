@@ -26,20 +26,6 @@ const message = {
 }
 //----------------------------Action Event Listeners---------------------//
 
-// interactions.actions.addEventListener('click', function (event) {
-//     console.log("hello");
-//     if (event === interactions.library){
-//         console.log(event.target);
-//         upgradeHeroSkill (skill);
-//     } else if (event === interactions.gym){
-//         console.log(event.target);
-//         upgradeHeroSkill (skill);
-//     } else if (event === interactions.work){
-//         console.log(event.target);
-//         upgradeHeroSkill (skill);    
-//     }    
-// });
-
 interactions.actions.addEventListener('click', function(event) {
     console.log("hello");
     if (interactions.next === event.target) {
@@ -47,6 +33,7 @@ interactions.actions.addEventListener('click', function(event) {
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
         runActions (event);
+        upgradeHero (event);
     } else if (interactions.gym === event.target) {
         console.log('you clicked gym');
         runActions (event);
@@ -82,28 +69,27 @@ function setVillainStat () {
     }
 }
 
-function upgradeHeroSkill (skill) {
-    if (skill === action.library) {
+function upgradeHero (event) {
+    if (event.target === interactions.library) {
+        console.log('upgraded library');
         ++character.hero[0];
-    } else if (skill === action.gym) {
+    } else if (event === interactions.gym) {
+        console.log('upgraded gym');
         ++character.hero[1];
     } else {
-        ++character.hero[2];
-    }
-    story (skill);
-}
+        console.log('upgraded work');
+        ++character.hero[2];  
+    }    
+};
 
-function runFight () {
-
+function runFight (event) {
+    console.log("you made it to runFight fxn");   
 }
 
 function runActions (event) {
-    if (event)
-    console.log("you made it to library fxn")
+    
 }
 
 function runReset () {
 
 }
-
-//*https://codereview.stackexchange.com/questions/132397/prev-next-buttons-for-a-circular-list//*
