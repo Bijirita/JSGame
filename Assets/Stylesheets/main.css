@@ -45,7 +45,7 @@ body {
 }
 
 #Actions button {
-    display: none;
+    display: flex;
 }
 
 #text-box {

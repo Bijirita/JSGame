@@ -26,34 +26,50 @@ const message = {
 }
 //----------------------------Action Event Listeners---------------------//
 
-interactions.actions.addEventListener('click', function (event) {
-    if (event === interactions.library){
-        console.log(event.target);
-        upgradeHeroSkill (skill);
-    } else if (event === interactions.gym){
-        console.log(event.target);
-        upgradeHeroSkill (skill);
-    } else if (event === interactions.work){
-        console.log(event.target);
-        upgradeHeroSkill (skill);    
-    }    
+// interactions.actions.addEventListener('click', function (event) {
+//     console.log("hello");
+//     if (event === interactions.library){
+//         console.log(event.target);
+//         upgradeHeroSkill (skill);
+//     } else if (event === interactions.gym){
+//         console.log(event.target);
+//         upgradeHeroSkill (skill);
+//     } else if (event === interactions.work){
+//         console.log(event.target);
+//         upgradeHeroSkill (skill);    
+//     }    
+// });
+
+interactions.actions.addEventListener('click', function(event) {
+    console.log("hello");
+    if (interactions.next === event.target) {
+        messageHolder.textp.textContent = proceed(messageHolder.textp.textContent, message.story);
+    } else if (interactions.library === event.target) {
+        console.log("you clicked library");
+        runActions (event);
+    } else if (interactions.gym === event.target) {
+        console.log('you clicked gym');
+        runActions (event);
+    } else if (interactions.work === event.target) {
+        console.log('you clicked work');
+        runActions (event);
+    } else if (interactions.reset === event.target) {
+        console.log('you clicked restart');
+        runReset (event);
+    } else if (interactions.fight === event.target) {
+        console.log('you clicked fight');
+        funFight (event);
+    }
 });
-interactions.next.addEventListener('click', () => {
-    messageHolder.textp.textContent = proceed(messageHolder.textp.textContent, message.story);
-});
-interactions.fight.addEventListener('click', runFight);
-interactions.restart.addEventListener('click', restart);
 
 //-------------------------Functions------------------//
 
 function proceed (current, story) {
     var idx = story.indexOf(current);
     if  (idx === message.story.length - 1) {
-        messageHolder.textbox.removeChild(textbox.next);
-        interactions.fight.style.display = "inline-block";
         console.log(idx);
+        return message.story[0];
     }
-    interactions.fight.style.display = "inline-block";
     return message.story[idx + 1];
 }
 
@@ -81,7 +97,12 @@ function runFight () {
 
 }
 
-function restart () {
+function runActions (event) {
+    if (event)
+    console.log("you made it to library fxn")
+}
+
+function runReset () {
 
 }
 
