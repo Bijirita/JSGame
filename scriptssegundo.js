@@ -38,19 +38,25 @@ interactions.actions.addEventListener('click', function (event) {
         upgradeHeroSkill (skill);    
     }    
 });
-interactions.next.addEventListener('click', story);
+interactions.next.addEventListener('click', () => {
+    messageHolder.textp.textContent = proceed(messageHolder.textp.textContent, message.story);
+});
 interactions.fight.addEventListener('click', runFight);
 interactions.restart.addEventListener('click', restart);
 
 //-------------------------Functions------------------//
 
-function nextIndex (){
-    for (var i = 0; i < message.story.length; i++) {
-        messageHolder.textp.textContent = message.story[i];
-        console.log('1storyIndex is ' + i); 
+function proceed (current, message.story) {
+    var idx = message.story.indexOf(current);
+    if  (idx === message.story.lenth - 1) {
+        return message.story[0];
     }
-
+    return message.story[idx + 1];
 }
+
+    // for (var i = 0; i < message.story.length; i++) {
+    //     messageHolder.textp.textContent = message.story[i];
+    //     console.log('1storyIndex is ' + i);
 
 function setVillainStat () {
     let index = Math.floor(Math.random() * 12) + 3;
