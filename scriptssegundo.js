@@ -46,17 +46,15 @@ interactions.restart.addEventListener('click', restart);
 
 //-------------------------Functions------------------//
 
-function proceed (current, message.story) {
-    var idx = message.story.indexOf(current);
-    if  (idx === message.story.lenth - 1) {
-        return message.story[0];
+function proceed (current, story) {
+    var idx = story.indexOf(current);
+    if  (idx === message.story.length - 1) {
+        console.log(idx);
+        return message.story[idx + 1];
     }
+    console.log(idx);
     return message.story[idx + 1];
 }
-
-    // for (var i = 0; i < message.story.length; i++) {
-    //     messageHolder.textp.textContent = message.story[i];
-    //     console.log('1storyIndex is ' + i);
 
 function setVillainStat () {
     let index = Math.floor(Math.random() * 12) + 3;
