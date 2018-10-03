@@ -10,7 +10,8 @@ const interactions = {
     gym: document.getElementById('Gym'),
     work: document.getElementById('Work'),
     fight: document.getElementById('Fight'),
-    next: document.getElementById('Next'),
+    next: document.getElementById('NextStory'),
+    nextd: document.getElementById('NextDay'),
     restart: document.getElementById('Restart'),
 }
 
@@ -29,7 +30,10 @@ const message = {
 interactions.actions.addEventListener('click', function(event) {
     console.log("hello");
     if (interactions.next === event.target) {
-        messageHolder.textp.textContent = proceed(messageHolder.textp.textContent, message.story);
+        messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story)
+    } else if (interactions.nextd === event.target) {
+        console.log('youclick nextday')
+        runDay ();
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
         runActions (event);
@@ -51,7 +55,7 @@ interactions.actions.addEventListener('click', function(event) {
 
 //-------------------------Functions------------------//
 
-function proceed (current, story) {
+function proceedStory (current, story) {
     var idx = story.indexOf(current);
     if  (idx === message.story.length - 1) {
         console.log(idx);
@@ -92,4 +96,7 @@ function runActions (event) {
 
 function runReset () {
 
+}
+function runDay () {
+    console.log("you runDay");
 }
