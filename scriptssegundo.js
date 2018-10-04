@@ -27,6 +27,8 @@ const message = {
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
 
+let dayIndex = -1;
+
 //----------------------------Action Event Listeners---------------------//
 
 interactions.next.style.display = "flex";
@@ -37,7 +39,7 @@ interactions.actions.addEventListener('click', function(event) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
         console.log('youclick nextday');
-        messageHolder.textp.textContent = 'Today is ' + proceedDay (messageHolder.textp.textContent, message.day) + '. How will you train?';
+        messageHolder.textp.textContent = "Today is " + message.day[proceedDay()];
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
@@ -73,18 +75,16 @@ function proceedStory (current, story) {
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
     } else {
-        console.log(idxs);
+        
         return message.story[idxs + 1];
     }
 }
 
-function proceedDay (current, day) {
-    let idxd = day.indexOf(current);
-    if  (idxd === message.day.length - 1) {
+function proceedDay (dayIndex) {
+    if  (dayIndex === message.day.length - 1) {
         runFight();
     } else { 
-        console.log(idxd);
-        return message.day[idxd + 1];
+        return ++dayIndex;
     }
 }
 
@@ -102,13 +102,13 @@ function upgradeHero (event) {
     interactions.gym.style.display = "none";
     interactions.work.style.display = "none";
     if (event.target === interactions.library) {
-        console.log('you feel smortr');
+        messageHolder.textp.textContent = 'Your brain folds';
         ++character.hero[0];
     } else if (event.target === interactions.gym) {
-        console.log('you feel stronkr');
+        messageHolder.textp.textContent = 'Your muscles swell';
         ++character.hero[1];
     } else {
-        console.log('you feel rechr');
+        messageHolder.textp.textContent = 'Your pockets get deeper ';
         ++character.hero[2];  
     }    
 };
