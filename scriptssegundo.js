@@ -16,8 +16,6 @@ const interactions = {
     restart: document.getElementById('Restart'),
 }
 
-
-
 const messageHolder = {
     textbox: document.getElementById('text-box'),
     textp: document.querySelector('#text-box > p'),
@@ -50,9 +48,9 @@ interactions.actions.addEventListener('click', function(event) {
     } else if (interactions.work === event.target) {
         console.log('you clicked work');
         upgradeHero (event);
-    } else if (interactions.reset === event.target) {
+    } else if (interactions.restart === event.target) {
         console.log('you clicked restart');
-        runReset (event);
+        runRestart (event);
     } else if (interactions.fight === event.target) {
         console.log('you clicked fight');
         runFight ();
@@ -69,10 +67,9 @@ function proceedStory (current, story) {
         interactions.next.style.display = "none";
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
-        return console.log('yes');
     } else 
-    console.log(idx);
-    return message.story[idx + 1];
+        console.log(idx);
+        return message.story[idx + 1];
 }
 
 function setShoeStat () {
@@ -100,10 +97,8 @@ function upgradeHero (event) {
 function runFight () {
     character.hero.forEach(function(value, index) {
         if (character.hero[index] > character.shoe[index]) {
-            console.log('youwin');
             return win();
         } else if (character.total === 2) {
-            console.log("youlose");
             return lose();
         } else ++character.total;
     })
@@ -113,9 +108,23 @@ function runActions (event) {
     
 }
 
-function runReset () {
-
+function runRestart (event) {
+    console.log("you restart");
 }
 function runDay () {
     console.log("you runDay");
 }
+
+function win () {
+    console.log('youwin');
+    interactions.fight.style.display = "none";
+    interactions.restart.style.display = "flex";
+}
+
+function lose () {
+    console.log("youlose");
+    interactions.fight.style.display = "none";
+    interactions.restart.style.display = "flex";
+
+}
+//make function that runs battle win or lose.
