@@ -34,10 +34,15 @@ interactions.next.style.display = "flex";
 interactions.actions.addEventListener('click', function(event) {
     console.log("hello");
     if (interactions.next === event.target) {
-        messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story)
+        messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
-        console.log('youclick nextday')
-        runDay ();
+        console.log('youclick nextday');
+        messageHolder.textp.textContent = proceedDay (messageHolder.textp.textContent, message.day);
+        interactions.library.style.display = "flex";
+        interactions.gym.style.display = "flex";
+        interactions.work.style.display = "flex";
+        interactions.fight.textContent = 'Fight';
+        runActions ();
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
         runActions (event);
@@ -65,11 +70,21 @@ function proceedStory (current, story) {
         setShoeStat();
         console.log(character.shoe);
         interactions.next.style.display = "none";
+        interactions.nextd.style.display = "flex";
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
     } else 
         console.log(idx);
         return message.story[idx + 1];
+}
+
+function proceedDay (current, day) {
+    var idx = day.indexOf(current);
+    if  (idx === message.day.length - 1) {
+        runFight();
+    } else 
+        console.log(idx);
+        return message.day[idx + 1];
 }
 
 function setShoeStat () {
@@ -82,6 +97,9 @@ function setShoeStat () {
 }
 
 function upgradeHero (event) {
+    interactions.library.style.display = "none";
+    interactions.gym.style.display = "none";
+    interactions.work.style.display = "none";
     if (event.target === interactions.library) {
         console.log('you feel smortr');
         ++character.hero[0];
@@ -105,7 +123,7 @@ function runFight () {
 }
 
 function runActions (event) {
-    
+    console.log('actions run');
 }
 
 function runRestart (event) {
