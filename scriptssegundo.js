@@ -1,7 +1,7 @@
 //--------------------Objects------------------//
 let character = {
-    hero: [0, 0, 0],
-    shoe: [1, 1, 1],
+    hero: [1, 1, 1],
+    shoe: [0, 0, 0],
     total: 0,
 }
 
@@ -37,12 +37,11 @@ interactions.actions.addEventListener('click', function(event) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
         console.log('youclick nextday');
-        messageHolder.textp.textContent = proceedDay (messageHolder.textp.textContent, message.day);
+        messageHolder.textp.textContent = 'Today is ' + proceedDay (messageHolder.textp.textContent, message.day) + '. How will you train?';
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
         interactions.fight.textContent = 'Fight';
-        runActions ();
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
         runActions (event);
@@ -65,26 +64,28 @@ interactions.actions.addEventListener('click', function(event) {
 //-------------------------Functions------------------//
 
 function proceedStory (current, story) {
-    var idx = story.indexOf(current);
-    if  (idx === message.story.length - 1) {
+    let idxs = story.indexOf(current);
+    if  (idxs === message.story.length - 1) {
         setShoeStat();
         console.log(character.shoe);
         interactions.next.style.display = "none";
         interactions.nextd.style.display = "flex";
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
-    } else 
-        console.log(idx);
-        return message.story[idx + 1];
+    } else {
+        console.log(idxs);
+        return message.story[idxs + 1];
+    }
 }
 
 function proceedDay (current, day) {
-    var idx = day.indexOf(current);
-    if  (idx === message.day.length - 1) {
+    let idxd = day.indexOf(current);
+    if  (idxd === message.day.length - 1) {
         runFight();
-    } else 
-        console.log(idx);
-        return message.day[idx + 1];
+    } else { 
+        console.log(idxd);
+        return message.day[idxd + 1];
+    }
 }
 
 function setShoeStat () {
