@@ -2,6 +2,7 @@
 let character = {
     hero: [0, 0, 0],
     shoe: [1, 1, 1],
+    total: 0,
 }
 
 const interactions = {
@@ -63,6 +64,8 @@ interactions.actions.addEventListener('click', function(event) {
 function proceedStory (current, story) {
     var idx = story.indexOf(current);
     if  (idx === message.story.length - 1) {
+        setShoeStat();
+        console.log(character.shoe);
         interactions.next.style.display = "none";
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
@@ -95,16 +98,15 @@ function upgradeHero (event) {
 };
 
 function runFight () {
-    console.log("you made it to runFight fxn");
-    for (var i = 0; i <= 3; i++) {
-        if (character.hero[i] > character.shoe[i]) {
-            console.log('you win');
+    character.hero.forEach(function(value, index) {
+        if (character.hero[index] > character.shoe[index]) {
+            console.log('youwin');
             return win();
-        }else if (i === 3) {
-            console.log('you lose');
+        } else if (character.total === 2) {
+            console.log("youlose");
             return lose();
-        }
-    }   
+        } else ++character.total;
+    })
 }
 
 function runActions (event) {
