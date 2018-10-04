@@ -13,7 +13,7 @@ body {
 }
 
 .interaction-window button{
-    width: 60px;
+    height: 21px;
 }
 
 .text-window {
@@ -44,8 +44,12 @@ body {
     align-items:center;
 }
 
+/* #Library, #Gym, #Work, #Fight, #NextDay {
+    display: none;
+} */
+
 #Actions button {
-    display: flex;
+    display: none;
 }
 
 #text-box {

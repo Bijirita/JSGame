@@ -1,7 +1,7 @@
 //--------------------Objects------------------//
 let character = {
     hero: [0, 0, 0],
-    villain: [1, 1, 1],
+    shoe: [1, 1, 1],
 }
 
 const interactions = {
@@ -15,6 +15,8 @@ const interactions = {
     restart: document.getElementById('Restart'),
 }
 
+
+
 const messageHolder = {
     textbox: document.getElementById('text-box'),
     textp: document.querySelector('#text-box > p'),
@@ -25,7 +27,10 @@ const message = {
         'Shoe walks up and says: "We fight friday!"', "How do you respond?"],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
+
 //----------------------------Action Event Listeners---------------------//
+
+interactions.next.style.display = "flex";
 
 interactions.actions.addEventListener('click', function(event) {
     console.log("hello");
@@ -58,18 +63,21 @@ interactions.actions.addEventListener('click', function(event) {
 function proceedStory (current, story) {
     var idx = story.indexOf(current);
     if  (idx === message.story.length - 1) {
-        console.log(idx);
-        return message.story[0];
-    }
+        interactions.next.style.display = "none";
+        interactions.fight.style.display = "flex";
+        interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
+        return console.log('yes');
+    } else 
+    console.log(idx);
     return message.story[idx + 1];
 }
 
-function setVillainStat () {
+function setShoeStat () {
     let index = Math.floor(Math.random() * 12) + 3;
     for (var i = 0; i < index; i++) {
-        let villainStat = [Math.floor(Math.random() * 3)];
-        character.villain[villainStat] +=  1;
-        console.log("villainstat is now " + character.villain)
+        let shoeStat = [Math.floor(Math.random() * 3)];
+        character.shoe[shoeStat] +=  1;
+        console.log("shoestat is now " + character.shoe)
     }
 }
 
@@ -88,11 +96,13 @@ function upgradeHero (event) {
 
 function runFight () {
     console.log("you made it to runFight fxn");
-    for (var i = 0; heroIndex <= 3; i++) {
-        if (hero[heroIndex] > bully[heroIndex]) {
-           return win();
-        }else if (heroIndex === 3) {
-           return lose();
+    for (var i = 0; i <= 3; i++) {
+        if (character.hero[i] > character.shoe[i]) {
+            console.log('you win');
+            return win();
+        }else if (i === 3) {
+            console.log('you lose');
+            return lose();
         }
     }   
 }
