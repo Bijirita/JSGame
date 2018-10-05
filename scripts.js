@@ -202,14 +202,14 @@ function restart () {
     next.addEventListener ('click', story);
 }
 
-const div = document.querySelector("div");
-let button = 'hola';
+// const div = document.querySelector("div");
+// let button = 'hola';
 
-div.addEventListener("click", function(event) {
-    button = event.target;
-  // console.log(button);
-  MasterControl();
-});
+// div.addEventListener("click", function(event) {
+//     button = event.target;
+//   // console.log(button);
+//   MasterControl();
+// });
 
 // const MasterControl = function () {
 //   const play = document.getElementById("play"),

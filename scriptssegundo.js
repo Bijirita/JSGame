@@ -27,8 +27,6 @@ const message = {
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
 
-let dayIndex = 0;
-
 //----------------------------Action Event Listeners---------------------//
 
 interactions.next.style.display = "flex";
@@ -38,15 +36,14 @@ interactions.actions.addEventListener('click', function(event) {
     if (interactions.next === event.target) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
-        console.log('youclick nextday');
-        proceedDay(dayIndex);
+        console.log(event.target);
+        messageHolder.textp.textContent = proceedDay(messageHolder.textp.textContent, message.day);
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
         interactions.fight.textContent = 'Fight';
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
-        runActions (event);
         upgradeHero (event);
     } else if (interactions.gym === event.target) {
         console.log('you clicked gym');
@@ -66,8 +63,8 @@ interactions.actions.addEventListener('click', function(event) {
 //-------------------------Functions------------------//
 
 function proceedStory (current, story) {
-    let idxs = story.indexOf(current);
-    if  (idxs === message.story.length - 1) {
+    let storyIndex = story.indexOf(current);
+    if  (storyIndex === message.story.length - 1) {
         setShoeStat();
         console.log(character.shoe);
         interactions.next.style.display = "none";
@@ -75,27 +72,22 @@ function proceedStory (current, story) {
         interactions.fight.style.display = "flex";
         interactions.fight.textContent = '"Leeeroooy Jeeenkiiins!"';
     } else {
-        return message.story[idxs + 1];
+        
+        return message.story[storyIndex + 1];
     }
 }
 
-function proceedDay (dayIndex) {
-    if (dayIndex === message.day.length) {
-        return runFight();
-    } else if (dayIndex <= message.day.length - 1) {
-        messageHolder.textp.textContent = 'Today is ' + message.day[dayIndex] + ' how will you spend your day?';
-        ++dayIndex;
-        console.log('day index is ' + dayIndex);
+function proceedDay (current, day) {
+    let dayIndex = day.indexOf(current);
+    console.log(dayIndex);
+    if  (dayIndex === message.day.length - 1) {
+        runFight();
+    } else {
+        console.log(dayIndex);
+        return message.day[dayIndex + 1];
+        console.log(dayIndex);
     }
 }
-
-// function proceedDay (dayIndex) {
-//     if  (dayIndex === message.day.length - 1) {
-//         runFight();
-//     } else { 
-//         return ++dayIndex;
-//     }
-// }
 
 function setShoeStat () {
     let index = Math.floor(Math.random() * 12) + 3;
@@ -132,25 +124,20 @@ function runFight () {
     })
 }
 
-function runActions (event) {
-    console.log('actions run');
-}
-
 function runRestart (event) {
     console.log("you restart");
-}
-function runDay () {
-    console.log("you runDay");
 }
 
 function win () {
     console.log('youwin');
+    messageHolder.textp.textContent = "You Win!";
     interactions.fight.style.display = "none";
     interactions.restart.style.display = "flex";
 }
 
 function lose () {
     console.log("youlose");
+    messageHolder.textp.textContent = "You Lose!";
     interactions.fight.style.display = "none";
     interactions.restart.style.display = "flex";
 
