@@ -27,7 +27,7 @@ const message = {
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
 
-let dayIndex = -1;
+let dayIndex = 0;
 
 //----------------------------Action Event Listeners---------------------//
 
@@ -39,7 +39,7 @@ interactions.actions.addEventListener('click', function(event) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
         console.log('youclick nextday');
-        messageHolder.textp.textContent = message.day[proceedDay(dayIndex)];
+        proceedDay(dayIndex);
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
@@ -80,12 +80,22 @@ function proceedStory (current, story) {
 }
 
 function proceedDay (dayIndex) {
-    if  (dayIndex === message.day.length - 1) {
-        runFight();
-    } else { 
-        return ++dayIndex;
+    if (dayIndex === message.day.length) {
+        return runFight();
+    } else if (dayIndex <= message.day.length - 1) {
+        messageHolder.textp.textContent = 'Today is ' + message.day[dayIndex] + ' how will you spend your day?';
+        ++dayIndex;
+        console.log('day index is ' + dayIndex);
     }
 }
+
+// function proceedDay (dayIndex) {
+//     if  (dayIndex === message.day.length - 1) {
+//         runFight();
+//     } else { 
+//         return ++dayIndex;
+//     }
+// }
 
 function setShoeStat () {
     let index = Math.floor(Math.random() * 12) + 3;
