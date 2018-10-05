@@ -39,7 +39,7 @@ interactions.actions.addEventListener('click', function(event) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
         console.log('youclick nextday');
-        messageHolder.textp.textContent = "Today is " + message.day[proceedDay(dayIndex)];
+        messageHolder.textp.textContent = message.day[proceedDay(dayIndex)];
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
