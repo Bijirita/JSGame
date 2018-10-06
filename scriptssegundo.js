@@ -83,9 +83,7 @@ function proceedDay (current, day) {
     if  (dayIndex === message.day.length - 1) {
         runFight();
     } else {
-        console.log(dayIndex);
         return message.day[dayIndex + 1];
-        console.log(dayIndex);
     }
 }
 
