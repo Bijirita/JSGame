@@ -83,10 +83,14 @@ function proceedDay (current, day) {
     if  (dayIndex === message.day.length - 1) {
         runFight();
     } else {
+<<<<<<< HEAD
         console.log(dayIndex);
         interactions.fight.style.display = "flex";
         interactions.nextd.style.display = "none";
         return ++dayIndex;
+=======
+        return message.day[dayIndex + 1];
+>>>>>>> 8fe4f98593c9fd04015ac73dbb2cd824942b2b27
     }
 }
 
