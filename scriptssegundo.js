@@ -25,7 +25,9 @@ const message = {
     story: ["You're the new kid on the block", "First day of school", 
         'Shoe walks up and says: "We fight friday!"', "How do you respond?"],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    fightShoe: ["Today is the day", 'Shoe "time to go, boi!"'],
 }
+
 let dayIndex = 0;
 //----------------------------Action Event Listeners---------------------//
 
@@ -65,6 +67,8 @@ interactions.actions.addEventListener('click', function(event) {
 
 function proceedStory (current, story) {
     let storyIndex = story.indexOf(current);
+    interactions.restart.style.display = "none";
+    interactions.next.style.display = "flex";
     if  (storyIndex === message.story.length - 1) {
         setShoeStat();
         console.log(character.shoe);
@@ -83,14 +87,10 @@ function proceedDay (current, day) {
     if  (dayIndex === message.day.length - 1) {
         runFight();
     } else {
-<<<<<<< HEAD
         console.log(dayIndex);
         interactions.fight.style.display = "flex";
         interactions.nextd.style.display = "none";
         return ++dayIndex;
-=======
-        return message.day[dayIndex + 1];
->>>>>>> 8fe4f98593c9fd04015ac73dbb2cd824942b2b27
     }
 }
 
@@ -131,22 +131,37 @@ function runFight () {
     })
 }
 
-function runRestart (event) {
-    console.log("you restart");
-}
 
 function win () {
     console.log('youwin');
     messageHolder.textp.textContent = "You Win!";
+    interactions.library.style.display = "none";
+    interactions.gym.style.display = "none";
+    interactions.work.style.display = "none";
     interactions.fight.style.display = "none";
+    interactions.nextd.style.display = "none";
     interactions.restart.style.display = "flex";
 }
 
 function lose () {
     console.log("youlose");
-    messageHolder.textp.textContent = "You Lose!";
+    messageHolder.textp.textContent = "You Lose! Restart Game?";
+    interactions.library.style.display = "none";
+    interactions.gym.style.display = "none";
+    interactions.work.style.display = "none";
     interactions.fight.style.display = "none";
+    interactions.nextd.style.display = "none";
     interactions.restart.style.display = "flex";
 
+}
+
+function runRestart (event) {
+    console.log("you clicked restart");
+    let character = {
+        hero: [1, 1, 1],
+        shoe: [0, 0, 0],
+    }
+    let dayIndex = 0;
+    proceedStory (messageHolder.textp.textContent, message.story);
 }
 //make function that runs battle win or lose.
