@@ -26,7 +26,7 @@ const message = {
         'Shoe walks up and says: "We fight friday!"', "How do you respond?"],
     day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
 }
-
+let dayIndex = 0;
 //----------------------------Action Event Listeners---------------------//
 
 interactions.next.style.display = "flex";
@@ -37,11 +37,12 @@ interactions.actions.addEventListener('click', function(event) {
         messageHolder.textp.textContent = proceedStory(messageHolder.textp.textContent, message.story);
     } else if (interactions.nextd === event.target) {
         console.log(event.target);
-        messageHolder.textp.textContent = proceedDay(messageHolder.textp.textContent, message.day);
+        messageHolder.textp.textContent = "Today is " + message.day[dayIndex] + ". What will you do?";
         interactions.library.style.display = "flex";
         interactions.gym.style.display = "flex";
         interactions.work.style.display = "flex";
         interactions.fight.textContent = 'Fight';
+        proceedDay ();
     } else if (interactions.library === event.target) {
         console.log("you clicked library");
         upgradeHero (event);
@@ -78,14 +79,14 @@ function proceedStory (current, story) {
 }
 
 function proceedDay (current, day) {
-    let dayIndex = day.indexOf(current);
     console.log(dayIndex);
     if  (dayIndex === message.day.length - 1) {
         runFight();
     } else {
         console.log(dayIndex);
-        return message.day[dayIndex + 1];
-        console.log(dayIndex);
+        interactions.fight.style.display = "flex";
+        interactions.nextd.style.display = "none";
+        return ++dayIndex;
     }
 }
 
@@ -102,6 +103,8 @@ function upgradeHero (event) {
     interactions.library.style.display = "none";
     interactions.gym.style.display = "none";
     interactions.work.style.display = "none";
+    interactions.fight.style.display = "none";
+    interactions.nextd.style.display = "flex";
     if (event.target === interactions.library) {
         messageHolder.textp.textContent = 'Your brain folds';
         ++character.hero[0];
