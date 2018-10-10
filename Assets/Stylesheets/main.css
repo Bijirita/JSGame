@@ -1,11 +1,13 @@
 body {
     background: black;
+    font: 300 16px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .game-window {
     display: grid;
     grid-template-rows: 70% 30%;
     height: 600px;
     width: 600px;
+    margin: 10%;
 }
 
 .interaction-window {
@@ -54,9 +56,15 @@ body {
 
 #text-box {
     display: flex;
+    align-items:center;
+    justify-content: center;
     height: 150px;
     width: 570px;
-    background: blue;
+    background: #626D71;
+    color: white;
+    font-size: 22px;
+    font-family: "Niramit", sans-serif;
+
 }
 
 #text-box button {

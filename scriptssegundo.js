@@ -29,6 +29,8 @@ const message = {
 }
 
 let dayIndex = 0;
+
+let myOpacity = 0;
 //----------------------------Action Event Listeners---------------------//
 
 interactions.next.style.display = "flex";
@@ -143,9 +145,11 @@ function win () {
     interactions.restart.style.display = "flex";
 }
 
+let lost = "You Lose! Restart Game?"
+
 function lose () {
     console.log("youlose");
-    messageHolder.textp.textContent = "You Lose! Restart Game?";
+    messageHolder.textp.textContent = fadeIn (lost);
     interactions.library.style.display = "none";
     interactions.gym.style.display = "none";
     interactions.work.style.display = "none";
@@ -163,5 +167,13 @@ function runRestart (event) {
     }
     let dayIndex = 0;
     proceedStory (messageHolder.textp.textContent, message.story);
+}
+
+function fadeIn (youLose) {
+    if (myOpacity < 1) {
+        myOpacity += .1;
+        setTimeout (function(){fadeIn(youLose)},100);
+    }
+    document.querySelector('#text-box > p').style.opacity = myOpacity;
 }
 //make function that runs battle win or lose.
