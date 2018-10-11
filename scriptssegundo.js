@@ -5,6 +5,9 @@ let character = {
     total: 0,
 }
 
+
+const shoepic = document.getElementById('Shoebox');
+
 const interactions = {
     actions: document.getElementById('Actions'),
     library: document.getElementById('Library'),
@@ -18,7 +21,7 @@ const interactions = {
 
 const messageHolder = {
     textbox: document.getElementById('text-box'),
-    textp: document.querySelector('#text-box > p'),
+    textp: document.querySelector('#para > p'),
 }
 
 const message = {
@@ -86,6 +89,8 @@ function proceedStory (current, story) {
 
 function proceedDay (current, day) {
     console.log(dayIndex);
+    document.getElementById("interaction-window").style.backgroundImage = "url('Assets/Images/block.jpg')";
+        document.getElementById("interaction-window").style.backgroundSize= 'cover';
     if  (dayIndex === message.day.length - 1) {
         runFight();
     } else {
@@ -113,12 +118,18 @@ function upgradeHero (event) {
     interactions.nextd.style.display = "flex";
     if (event.target === interactions.library) {
         messageHolder.textp.textContent = 'Your brain folds';
+        document.getElementById("interaction-window").style.backgroundImage = "url('Assets/Images/library.jpg')";
+        document.getElementById("interaction-window").style.backgroundSize= 'cover';
         ++character.hero[0];
     } else if (event.target === interactions.gym) {
         messageHolder.textp.textContent = 'Your muscles swell';
+        document.getElementById("interaction-window").style.backgroundImage = "url('Assets/Images/gym.jpg')";
+        document.getElementById("interaction-window").style.backgroundSize= 'cover';
         ++character.hero[1];
     } else {
         messageHolder.textp.textContent = 'Your pockets get deeper ';
+        document.getElementById("interaction-window").style.backgroundImage = "url('Assets/Images/work.jpg')";
+        document.getElementById("interaction-window").style.backgroundSize= 'cover';
         ++character.hero[2];  
     }    
 };
@@ -157,11 +168,13 @@ function lose () {
     interactions.fight.style.display = "none";
     interactions.nextd.style.display = "none";
     interactions.restart.style.display = "flex";
-
+    shoepic.style.display= "flex";
+    shoepic.style.animation = "rotate 2s infinite linear";
 }
 
 function runRestart (event) {
     console.log("you clicked restart");
+    shoepic.style.display = "none";
     let character = {
         hero: [1, 1, 1],
         shoe: [0, 0, 0],
@@ -170,12 +183,12 @@ function runRestart (event) {
     proceedStory (messageHolder.textp.textContent, message.story);
 }
 
-function fadeIn (youLose) {
-    document.querySelector('#text-box > p').style.opacity = myOpacity;
+function fadeIn (input) {
+    document.querySelector('#para > p').style.opacity = myOpacity;
     if (myOpacity < 1) {
         myOpacity += .1;
-        setTimeout (function(){fadeIn(youLose)},100);
+        setTimeout (function(){fadeIn(input)},100);
     }
-    return youLose;
+    return input;
 }
 //make function that runs battle win or lose.

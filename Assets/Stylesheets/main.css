@@ -1,3 +1,9 @@
+@keyframes rotate {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+
 body {
     background: black;
     font: 300 16px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -10,56 +16,55 @@ body {
     margin: 10%;
 }
 
-.interaction-window {
-    background: green;
+#interaction-window {
+    position: relative;
+    background-Image: url(../../Assets/Images/block.jpg);
+    background-Size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Shoebox {
+    display: none;
+    background-Image:  url(../../Assets/Images/shoe.jpg);
+    height: 200px;
+    width: 200px;
+    background-size: 100%;
 }
 
 .interaction-window button{
     height: 21px;
 }
 
-.text-window {
+
+#Actions {
     display: flex;
-    background: white;
-    justify-content: center;
+    width: 600px;
     align-items:center;
-
-}
-
-#TodayBox {
-    height: 100px;
-    width: 100px;
-    margin-left: 500px;
-    background: red;
-    display: flex;
     justify-content: center;
-    align-items:center;
-    display: none;
 }
-
-#TodayIs {
-    background: white;
-    width: 60px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-
-/* #Library, #Gym, #Work, #Fight, #NextDay {
-    display: none;
-} */
 
 #Actions button {
     display: none;
 }
 
-#text-box {
+#para {
     display: flex;
+    width: 600px;
+    height: 60px;
     align-items:center;
     justify-content: center;
-    height: 150px;
-    width: 570px;
+}
+
+#text-box {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    height: 180px;
+    width: 600px;
     background: #626D71;
     color: white;
     font-size: 22px;
@@ -67,11 +72,30 @@ body {
 
 }
 
-#text-box button {
-margin-left: 10px;
-height: 21px;
-}
 
 #Restart {
     display: none;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,.6);
+}
+
+#Library {
+    background-color: wheat;
+}
+#Gym {
+    background-color: tomato;
+}
+#Fight {
+    background-color: red;
+}
+#Work {
+    background-color: lightblue;
 }
