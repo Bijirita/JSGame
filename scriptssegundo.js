@@ -50,14 +50,11 @@ interactions.actions.addEventListener('click', function(event) {
         interactions.work.style.display = "flex";
         interactions.fight.textContent = 'Fight';
         proceedDay ();
-    } else if (interactions.library === event.target) {
-        console.log("you clicked library");
-        upgradeHero (event);
-    } else if (interactions.gym === event.target) {
-        console.log('you clicked gym');
-        upgradeHero (event);
-    } else if (interactions.work === event.target) {
-        console.log('you clicked work');
+    } else if (
+            interactions.library === event.target || 
+            interactions.gym === event.target ||
+            interactions.work === event.target
+        ) {
         upgradeHero (event);
     } else if (interactions.restart === event.target) {
         console.log('you clicked restart');
